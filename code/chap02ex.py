@@ -32,7 +32,12 @@ def AllModes(hist):
 
     returns: iterator of value-freq pairs
     """
-    modes = ([(value, count) for value, count in hist.Items()])
+
+    # wrong because hist.Items() is unsorted
+    #modes = ([(value, count) for value, count in hist.Items()])
+
+    # from solution
+    modes = sorted(hist.Items(), key=itemgetter(1), reverse=True)
     return modes
 
 
